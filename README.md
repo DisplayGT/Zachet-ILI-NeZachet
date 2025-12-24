@@ -21,5 +21,6 @@
 ## Установка и запуск
 
 ### 1. Клонирование репозитория
+```bash
 git clone https://github.com/DisplayGT/Zachet-ILI-NeZachet.git
 cd Zachet-ILI-NeZachet
