@@ -1,4 +1,4 @@
-# Flask Computer Equipment Management System
+# Flask Management System
 
 ## Описание проекта
 Система учета прививок в детском саду на базе Flask. Приложение позволяет вести учет прививок, управлять детьми.
