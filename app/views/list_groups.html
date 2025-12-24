@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Учет групп</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tables-style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="button primary" style="display:inline-block; width:230px; text-align:center;">Вернуться на главную страницу</a>
+        <h1 style="text-align: center;">Учет групп</h1>
+        <table class="all-table">
+            <tr>
+                <th>ID</th>
+                <th>Название группы</th>
+                <th>Руководитель</th>
+                <th>Количество детей</th>
+                <th>Действия</th>
+            </tr>
+            <tr>
+                <form method="POST" action="{{ url_for('groups.create_group') }}" class="all-form" autocomplete="off">
+                    <td>
+                        <input type="text" placeholder="Автогенерация" disabled class="text-field" style="width: 40px; text-align:center;">
+                    </td>
+                    <td>
+                        <input type="text" name="group_name" placeholder="Название" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="teacher" placeholder="Руководитель" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="how_many" placeholder="Количество детей" required class="text-field">
+                    </td>
+                    <td>
+                        <button type="submit" class="button primary" style="cursor:pointer; width: 210px; border:none;">Добавить группу</button>
+                    </td>
+                </form>
+            </tr>
+        </table>
+        <hr>
+        <table class="all-table">
+            {% for group in groups %}
+            <tr>
+                <form method="POST" action="{{ url_for('groups.update_group', group_id=group.id) }}">
+                    <td>
+                        <input type="text" value="{{ group.id }}" disabled class="text-field" style="width: 40px; text-align:center;">
+                    </td>
+                    <td>
+                        <input type="text" name="group_name" value="{{ group.group_name }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="teacher" value="{{ group.teacher }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="how_many" value="{{ group.how_many }}" class="text-field">
+                    </td>
+                    <td>
+                        <button type="submit" class="button-redact">Изменить</button>
+                        <button type="submit" formaction="{{ url_for('groups.delete_group', group_id=group.id) }}" class="button-delete">Удалить</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

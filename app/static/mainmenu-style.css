@@ -1,0 +1,45 @@
+body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 100px;
+    background: darkblue;
+}
+
+.container-index {
+    max-width: 280px;
+    margin: auto auto;
+    background: white;
+    padding: 24px;
+    border-radius: 5px;
+    box-shadow: 0 0px 20px violet;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.actions {
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.func-button {
+    display: flex;
+    padding: 8px 14px;
+    text-decoration: none;
+    background-color: lightgray;
+    border: 1px solid white;
+    width: 250px;
+    justify-content: center;
+    color: black;
+    margin: 5px;
+}
+
+.func-button:hover {
+    background-color: gray;
+}

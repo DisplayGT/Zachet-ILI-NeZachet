@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Учет детей</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tables-style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="button primary" style="display:inline-block; width:230px; text-align:center;">Вернуться на главную страницу</a>
+        <h1 style="text-align: center;">Учет детей</h1>
+        <table class="all-table">
+            <tr>
+                <th>ID</th>
+                <th>ФИО</th>
+                <th>Дата рождения</th>
+                <th>Название группы</th>
+                <th>Домашний адрес</th>
+                <th>Состояние</th>
+                <th>Действия</th>
+            </tr>
+            <tr>
+                <form method="POST" action="{{ url_for('kids.create_kids') }}" class="all-form" autocomplete="off">
+                    <td>
+                        <input type="text" placeholder="Автогенерация" disabled class="text-field" style="width: 40px; text-align:center;">
+                    </td>
+                    <td>
+                        <input type="text" name="kid" placeholder="ФИО" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="birth" placeholder="Дата рождения" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="groupp" placeholder="Название группы" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="adress" placeholder="Домашний адрес" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="state" placeholder="Состояние" required class="text-field">
+                    </td>
+                    <td>
+                        <button type="submit" class="button primary" style="cursor:pointer; width: 210px; border:none;">Добавить ребенка</button>
+                    </td>
+                </form>
+            </tr>
+        </table>
+        <hr>
+        <table class="all-table">
+            {% for kid in kids %}
+            <tr>
+                <form method="POST" action="{{ url_for('kids.update_kids', kid_id=kid.id) }}">
+                    <td>
+                        <input type="text" value="{{ kid.id }}" disabled class="text-field" style="width: 40px; text-align:center;">
+                    </td>
+                    <td>
+                        <input type="text" name="kid" value="{{ kid.kid }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="birth" value="{{ kid.birth }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="groupp" value="{{ kid.groupp }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="adress" value="{{ kid.adress }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="state" value="{{ kid.state }}" class="text-field">
+                    </td>
+                    <td>
+                        <button type="submit" class="button-redact">Изменить</button>
+                        <button type="submit" formaction="{{ url_for('kids.delete_kids', kid_id=kid.id) }}" class="button-delete">Удалить</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

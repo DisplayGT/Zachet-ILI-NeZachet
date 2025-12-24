@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Учет прививок в детском саду</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='mainmenu-style.css') }}">
+</head>
+<body>
+    <main class="container-index">
+        <h1 style="text-align: center;">Учет прививок в детском саду</h1>
+        <nav class="actions">
+            <div class="nav-buttons">
+                {% if current_user.is_authenticated %}
+                    <a class="func-button" href="{{ url_for('preparats.list_prep') }}">Учет препаратов</a>
+                    <a class="func-button" href="{{ url_for('groups.list_group') }}">Учет групп</a>
+                    <a class="func-button" href="{{ url_for('kids.list_kids') }}">Учет детей</a>
+                    <a class="func-button" href="{{ url_for('privivki.list_priv') }}">Учет прививок</a>
+                    <a class="func-button" href="{{ url_for('auth.logout') }}">Выйти</a>
+                {% else %}
+                    <a class="func-button" href="{{ url_for('auth.login') }}">Аутентификация</a>
+                {% endif %}
+            </div>
+        </nav>
+    </main>
+</body>
+</html>

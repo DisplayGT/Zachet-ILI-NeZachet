@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Учет прививок</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tables-style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="button primary" style="display:inline-block; width:230px; text-align:center;">
+            Вернуться на главную страницу
+        </a>
+        <h1 style="text-align: center;">Учет прививок</h1>
+        <table class="all-table">
+            <tr>
+                <th>ID</th>
+                <th>ФИО</th>
+                <th>Дата</th>
+                <th>Препарат</th>
+                <th>Вакцинация/Ревакцинация</th>
+                <th>Метод</th>
+                <th>Действия</th>
+            </tr>
+            <tr>
+                <form method="POST" action="{{ url_for('privivki.create_priv') }}" class="all-form" autocomplete="off">
+                    <td>
+                        <input type="text" placeholder="Автогенерация" disabled class="text-field" style="width: 40px; text-align:center;">
+                    </td>
+                    <td>
+                        <input type="text" name="fullname" placeholder="ФИО" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="date" placeholder="Дата" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="preparat" placeholder="Препарат" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="vacine" placeholder="Вакцинация/Ревакцинация" required class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="method" placeholder="Метод" required class="text-field">
+                    </td>
+                    <td>
+                        <button type="submit" class="button primary" style="cursor:pointer; width: 210px; border:none;">Привить ребенка</button>
+                    </td>
+                </form>
+            </tr>
+        </table>
+        <hr>
+        <table class="all-table">
+            {% for priv in privivki %}
+            <tr>
+                <form method="post" action="{{ url_for('privivki.update_priv', priv_id=priv.id) }}">
+                    <td>
+                        <input type="text" value="{{ priv.id }}" disabled class="text-field" style="width: 40px; text-align:center;">
+                    </td>
+                    <td>
+                        <input type="text" name="fullname" value="{{ priv.fullname }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="date" value="{{ priv.date }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="preparat" value="{{ priv.preparat }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="vacine" value="{{ priv.vacine }}" class="text-field">
+                    </td>
+                    <td>
+                        <input type="text" name="method" value="{{ priv.method }}" class="text-field">
+                    </td>
+                    <td>
+                        <button type="submit" class="button-redact">Изменить</button>
+                        <button type="submit" formaction="{{ url_for('privivki.delete_priv', priv_id=priv.id) }}" class="button-delete">Удалить</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

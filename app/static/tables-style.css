@@ -1,0 +1,98 @@
+body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding: 100px;
+    background: darkblue;
+}
+
+.container {
+    max-width: 1500px;
+    margin: auto auto;
+    background: linear-gradient(to bottom, white 90%, darkblue 99%);
+    padding: 24px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, violet 90%, darkblue 99%);
+    filter: blur(20px);
+    z-index: -1;
+}
+
+.text-field {
+    padding: 6px 14px;
+    width: 175px;
+}
+
+.all-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.all-table th, .all-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.all-table th {
+    font-size: 24px;
+    vertical-align: middle;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+.button.primary {
+    background: #000000;
+    color: white;
+    border: none;
+    font-family: Arial, sans-serif;
+    padding: 8px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+}
+
+.button.primary:hover {
+    background-color: gray;
+}
+
+.button-delete {
+    cursor: pointer;
+    border: none;
+    background-color: red;
+    color: white;
+    font-family: Arial, sans-serif;
+    width: 100px;
+    padding: 8px;
+    margin: 2px;
+}
+
+.button-redact {
+    cursor: pointer;
+    border: none;
+    background-color: darkorange;
+    color: white;
+    font-family: Arial, sans-serif;
+    width: 100px;
+    padding: 8px;
+    margin: 2px;
+}
+
+.button {
+    display: flex;
+    padding: 8px 14px;
+    border-radius: 0px;
+    text-decoration: none;
+    border: 1px solid #000000;
+    width: 100px;
+    justify-content: center;
+    background-color: lightgray;
+    color: black;
+}
